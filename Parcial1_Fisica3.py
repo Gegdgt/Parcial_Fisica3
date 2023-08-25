@@ -3,7 +3,11 @@
 # Fecha de ultima modificación: 24/08/2023
 
 import math
+#import numpy as np
+#import matplotlib.pyplot as plt
+import tkinter as ttk
 from scipy.integrate import quad
+
 
 # Función para calcular el anillo
 def anillo(Q, R, x):
@@ -36,6 +40,15 @@ def linea(Q, L, x):
     result, _ = quad(integrand, 0, L)
     return result
 
+def graficas():
+    root = Tk()
+    frm = ttk.Frame(root, padding=12)
+    frm.grid()
+    ttk.Label(frm, text = "Campo eléctrico").grid(column = 6, row = 0)
+    ttk.Button(frm, text = "Salir", command=root.destroy).grid(column=1, row=0)
+    root.mainloop()
+    return None
+
 sigue = True
 while sigue:
     print("Seleccione una opción:")
@@ -67,7 +80,7 @@ while sigue:
         print("Campo eléctrico de la línea de carga:", E, "N/C")
         
     elif menu == 4:
-        print("")
+        print("Salir")
         sigue = False
         
     else:
