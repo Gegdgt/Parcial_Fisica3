@@ -72,24 +72,29 @@ class CampoElectricoGraficado:
 
     def graficarCampoElectrico(self):
         geometry = self.geometry_entry.get()
+        self.axis.clear()
         if geometry == "Anillo":
             Q = float(input("Ingrese la carga total (Q) en C: "))
             R = float(input("Ingrese el radio del anillo (R) en m "))
             z = float(input("Ingrese la distancia (x) en m: "))
             E = anillo(Q, R, z)
+            title = "Campo electrico de un anillo"
             pass 
         elif geometry == "Disco":
             Q = float(input("Ingrese la carga total (Q) en C: "))
             R = float(input("Ingrese el radio del disco (R) en m: "))
             z = float(input("Ingrese la distancia (x) en m: "))
             E = disco(Q, R, z)
+            title = "Campo electrico de un disco"
             pass
         elif geometry == "Cilindro":
             Q = float(input("Ingrese la carga total (Q) en C: "))
             L = float(input("Ingrese la longitud de la línea (L) en m: "))
             z = float(input("Ingrese la distancia (x) en m: "))
             E = linea(Q, L, z)
+            title = "Campo electrico de un cilindro"
             pass
+
 
         #para graficar la figura
         fig = plt.figure()
@@ -106,46 +111,3 @@ app = CampoElectricoGraficado(root)
 root.mainloop()
 
 
-
-
-
-
-
-
-
-#sigue = True
-#while sigue:
-#    print("Seleccione una opción:")
-#    print("1. Realizar el anillo")
-#    print("2. Realizar el disco")
-#    print("3. Realizar la línea de carga")
-#    print("4. Cerrar el programa")
-#    menu = int(input())
-#    
-#    if menu == 1:
-#        Q = float(input("Ingrese la carga total (Q) en C: "))
-#        R = float(input("Ingrese el radio del anillo (R) en m "))
-#        x = float(input("Ingrese la distancia (x) en m: "))
-#        E = anillo(Q, R, x)
-#        print("Campo eléctrico del anillo: ", E, "N/C")
-#        
-#    elif menu == 2:
-#        Q = float(input("Ingrese la carga total (Q) en C: "))
-#        R = float(input("Ingrese el radio del disco (R) en m: "))
-#        x = float(input("Ingrese la distancia (x) en m: "))
-#        E = disco(Q, R, x)
-#        print("Campo eléctrico del disco:", E, "N/C")
-#        
-#    elif menu == 3:
-#        Q = float(input("Ingrese la carga total (Q) en C: "))
-#        L = float(input("Ingrese la longitud de la línea (L) en m: "))
-#        x = float(input("Ingrese la distancia (x) en m: "))
-#        E = linea(Q, L, x)
-#        print("Campo eléctrico de la línea de carga:", E, "N/C")
-#        
-#    elif menu == 4:
-#        print("Salir")
-#        sigue = False
-        
-#    else:
-#        print("Ingrese correctamente alguna opcion")
