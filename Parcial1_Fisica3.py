@@ -11,10 +11,10 @@ from scipy.integrate import quad
 
 # Función para calcular el anillo
 def anillo(Q, R, x):
-    def integrand(theta):
+    def integrand():
         r = R
-        return 1 / (4*math.pi*8.854187817e-12) * (Q / pow(r, 2)) / (pow(pow(r, 2) + pow(x, 2) - 2*r*x*math.cos(theta), 3/2))
-    
+        return (1 / (4*math.pi*8.854187817e-12)) * (Q*x) / (x**2+r**2)**(3/2)
+    # (Q / pow(r, 2)) / (pow(pow(r, 2) + pow(x, 2) - 2*r*x*math.cos(theta), 3/2)
     # quad es una función para realizar una integral numérica
     # _ Se utiliza para decir que no nos interesa el valor del error
     result, _ = quad(integrand, 0, 2*math.pi)
