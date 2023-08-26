@@ -15,8 +15,7 @@ from scipy.constants import epsilon_0 as e_0
 def anillo(Q, R, z):
     def integrand(theta):
         r = R
-        return (1 / (4*math.pi*e_0)) * (Q*z) / (z**2+r**2)**(3/2)
-    # (Q / pow(r, 2)) / (pow(pow(r, 2) + pow(x, 2) - 2*r*x*math.cos(theta), 3/2)
+        return (1 / (4*math.pi*e_0)) * (Q / pow(r, 2)) / (pow(pow(r, 2) + pow(z, 2) - 2*r*z*math.cos(theta), 3/2))
     # quad es una función para realizar una integral numérica
     # _ Se utiliza para decir que no nos interesa el valor del error
     result, _ = quad(integrand, 0, 2*math.pi)
@@ -54,8 +53,9 @@ class CampoElectricoGraficado:
         self.geometry_label.pack()
 
         #opciones a elegir
-        self.geometry_combobox = ttk.Combobox(root, values=["Anillo", "Disco", "Cilindro"])
-        self.geometry_combobox.pack()
+        self.geometry_entry = ttk.Entry(root, values=["Anillo", "Disco", "Cilindro"])
+        
+        self.geometry_entry.pack()
 
         #comando para graficar
         self.plot_button = ttk.Button(root, text="Graficar", command=self.graficarCampoElectrico)
@@ -71,7 +71,7 @@ class CampoElectricoGraficado:
         self.canvas.get_tk_widget().pack() 
 
     def graficarCampoElectrico(self):
-        geometry = self.geometry_combobox.get()
+        geometry = self.geometry_entry.get()
         if geometry == "Anillo":
             Q = float(input("Ingrese la carga total (Q) en C: "))
             R = float(input("Ingrese el radio del anillo (R) en m "))
